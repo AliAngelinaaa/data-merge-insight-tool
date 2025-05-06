@@ -1,16 +1,36 @@
 # Data Merge & Insight Tool
 
-A lightweight web app to upload two related datasets, merge them on a common column, and explore summary insights interactively.
+A lightweight web app to upload, merge, and explore multiple datasets interactively.
 
 ## Features
 
-- Drag-and-drop file upload (CSV or Excel)
-- Merge on user-specified column
-- Quick insights and visualizations
-- Data filtering and exploration
+- Upload multiple CSV or Excel files at once
+- Select any two datasets to merge on a user-specified column
+- View summary insights and key metrics:
+  - Total/unique/duplicate keys in each dataset
+  - Matched/unmatched rows and match rate
+  - Top values in the join column
+  - Distribution of numeric columns
+  - Missing value counts
+- Explore merged data with filtering by any column
+- Global search across all columns and rows
+- Quick, interactive visualizations
 
 ## Getting Started
 
 ```bash
 pip install -r requirements.txt
 streamlit run app.py
+```
+
+## Usage
+
+1. Upload two or more datasets (CSV or Excel).
+2. Enter the name of the common column to join on.
+3. Select which two datasets to merge.
+4. Explore summary insights, filter data, or search globally.
+
+## Requirements
+
+- Python 3.8+
+- See `requirements.txt` for dependencies (Streamlit, pandas, etc.)

@@ -26,8 +26,12 @@ if uploaded_files and len(uploaded_files) >= 2 and common_column:
             df_b = pd.read_csv(f) if f.name.endswith('.csv') else pd.read_excel(f)
 
     if common_column in df_a.columns and common_column in df_b.columns:
-        merged_df = pd.merge(df_b, df_a, on=common_column, how='left')
+        if df_a[common_column].nunique() < df_b[common_column].nunique():
+            left_df, right_df = df_a, df_b  # df_a is likely the parent
+        else:
+            left_df, right_df = df_b, df_a  # df_b is likely the parent
 
+        merged_df = pd.merge(right_df, left_df, on=common_column, how='left')
         page = st.sidebar.radio("Choose Page", ["Insights", "Data Explorer", "Global Search"])
 
         if page == "Insights":
